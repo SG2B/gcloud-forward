@@ -8,5 +8,3 @@ RUN chmod +x /usr/bin/entrypoint.sh
 VOLUME /usr/src/app
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
-
-EXPOSE 8000

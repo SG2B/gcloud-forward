@@ -1,18 +1,18 @@
 version: '3'
 services:
-  api:
+  forward:
     build:
       context: .
-    container_name: nimbee-geo-api
+    container_name: gcloud-forward
     image: gcloud-forward
     volumes:
-      - ${GOOGLE_APPLICATION_CREDENTIALS}:/usr/src/app/nimbee-sa-key.json
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/usr/src/app/sa-key.json
       - /home/jderuere/.config/gcloud:/config/gcloud
-    command: ['nimbee', '212415', 'geo-micronaut-api-dev', '8000', 'dev']
+    command: ['project', 'id', 'svc-name', 'port', 'namespace']
     ports:
       - 8000:8000
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/nimbee-sa-key.json
+      - GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/sa-key.json
       - CLOUDSDK_CONFIG=/config/gcloud
     networks:
       - cloud
